@@ -1,0 +1,9 @@
+<html>
+    <head>
+        <title>Andriod</title>
+    </head>
+    <body>
+            @include('inc.topnav')
+            @yield('content')
+    </body>
+    </html>
