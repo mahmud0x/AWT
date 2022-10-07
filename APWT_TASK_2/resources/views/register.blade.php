@@ -55,7 +55,7 @@
                     <button class="w-full px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900">Register</button>
                 </div>
                 <div class="mt-6 text-grey-dark">
-                    Already have an account?
+                   Already have an account?
                     <a class="text-blue-600 hover:underline" href="{{route('login')}}">
                         Log in
                     </a>

@@ -26,4 +26,4 @@ Route::get('/registration', [RegisterController::class, 'register'])->name('regi
 Route::post('/registration', [RegisterController::class, 'newRegister'])->name('register');
 
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
-Route::post('/contact', [LoginController::class, 'sendContact'])->name('contact');
+Route::post('/contact', [PagesController::class, 'sendContact'])->name('contact');

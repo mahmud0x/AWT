@@ -23,8 +23,7 @@ class RegisterController extends Controller
     );
         $passenger = new Passenger();
         $passenger->name = $request->name;
-        $passenger->password = $request->password;
-        
+        $passenger->password = $request->password;    
         $passenger->email = $request->email;
         $passenger->phone = $request->phone;
         $passenger->save();

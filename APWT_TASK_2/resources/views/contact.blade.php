@@ -14,9 +14,8 @@
     <div style="background-image: url('https://images.thedailystar.net/sites/default/files/images/2021/12/12/metro-rail.jpg')" class="bg-no-repeat">
 <div class="flex items-center justify-center min-h-screen">
     <div class="rounded-md px-8 py-6 mx-4 mt-4 text-left bg-white opacity-90 shadow-lg shadow-indigo-500/50 md:w-1/3 lg:w-1/3 sm:w-1/3">
-        <h3 class="text-2xl font-bold text-center">Login</h3>
-        <form action="{{route('login.custom')}}" method="post">
-
+        <h3 class="text-2xl font-bold text-center">Contact us</h3>
+        <form action="{{route('contact')}}" method="post">
         {{csrf_field()}}
             <div class="mt-4">
                 <div class="mt-4">
@@ -31,12 +30,19 @@
                     <label class="block">Subject<label>
                             <input type="text" name="subject" placeholder="Bug Report"
                                 class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600">
-                @error('password')
+                @error('subject')
                 <span class="text-xs text-red-400">{{$message}}</span>
                 @enderror                
                 </div>
+                <div class="sm:col-span-2">
+              <label class="block">Your message<label>
+              <textarea id="body" name="body" rows="6" class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="Leave a comment..."></textarea>
+              @error('body')
+                <span class="text-xs text-red-400">{{$message}}</span>
+                @enderror     
+            </div>
                 <div class="flex">
-                    <button class="w-full px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900">Login</button>
+                    <button class="w-full px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900">Send</button>
                 </div>
             </div>
         </form>

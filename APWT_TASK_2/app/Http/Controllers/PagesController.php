@@ -7,13 +7,25 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function index(){
-        return view('welcome');
+        return view('inc.topbar');
     }
     public function contact(){
-        return view('welcome');
+        return view('contact');
     }
-    public function sendContact(){
-        return view('welcome');
+    public function sendContact(Request $request){
+        $validate = $request->validate([
+            'subject' => 'required|max:100',
+            'body' => 'required',
+            'email'=>'email'
+        ]);
+
+        $email = $request->email;
+        $subject = $request->subject;
+        $body = $request->body;
+        return view('contactshow')->with('email', $email)->with('subject', $subject)->with('body', $body);
+   
     }
-    
+
+
+
 }
