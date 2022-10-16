@@ -20,6 +20,6 @@ class PagesController extends Controller
     }
     public function service(){
         $services=array("Dummy Service-1", "Dummy Service-2", "Dummy Service-3","Dummy Service-4");
-        return view('service')->with('services', $services);
+        return view('service')->with('service', $services);
     }
 }
