@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('managers', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('email')->uniqid();
+            $table->string('password');
         });
     }
 

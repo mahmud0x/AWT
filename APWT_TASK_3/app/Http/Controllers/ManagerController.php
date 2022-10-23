@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Manager;
 use App\Http\Requests\StoreManagerRequest;
+use App\Models\Customer;
+use Illuminate\Http\Request;
 use App\Http\Requests\UpdateManagerRequest;
 
 class ManagerController extends Controller
@@ -45,9 +47,13 @@ class ManagerController extends Controller
      * @param  \App\Models\Manager  $manager
      * @return \Illuminate\Http\Response
      */
-    public function show(Manager $manager)
+    public function show(Request $request)
     {
-        //
+        $customer = Customer::where('name', $request->name)->first();
+        //dd($customer);
+        
+
+        return view('customeredit')->with('customer', $customer);
     }
 
     /**
@@ -56,9 +62,17 @@ class ManagerController extends Controller
      * @param  \App\Models\Manager  $manager
      * @return \Illuminate\Http\Response
      */
-    public function edit(Manager $manager)
+    public function edit(Request $request)
     {
-        //
+        
+        $customer = Customer::where('name', $request->name)->first();
+        //dd($customer);
+        //echo $customer;
+        $customer->email = $request->email;
+        $customer->phone = $request->phone;
+        //echo $customer->name;
+        $customer->save();
+        return redirect()->route('customerlist');
     }
 
     /**
@@ -83,4 +97,18 @@ class ManagerController extends Controller
     {
         //
     }
+    public function loadlist(Request $request)
+    {
+        $customers = Customer::all();
+        return view('customerlist')->with('customers', $customers);
+    }
+
+    public function delete(Request $request)
+    {
+        $customer = Customer::where('name', $request->name)->delete();
+        //$customer->password = $request->pass;
+        //$customer->save();
+        return redirect()->route('customerlist');
+    }
+   
 }

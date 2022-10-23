@@ -9,5 +9,4 @@ class Manager extends Model
 {
     use HasFactory;
     public $timestamps = false;
-
 }

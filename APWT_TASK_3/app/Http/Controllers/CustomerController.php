@@ -85,25 +85,34 @@ class CustomerController extends Controller
     {
         //
     }
-    public function menu(){
+    public function menu()
+    {
         return view('customer');
     }
-    public function order(Request $request){
+    public function order(Request $request)
+    {
         $order = new Order();
         $order->item = $request->get('item');
-        $order->orderby = $request->session()->get('user');
+        $order->cust_id = $request->session()->get('userid');
         $order->save();
-        return redirect()->route('menu');
+        return view('customer')->with('success',"Order Placed!");
     }
-    public function passupdate(Request $request){
-        $customer = Customer::where('name',$request->session()->get('user'))->first();
+    public function passreset()
+    {
+        return view('passwordreset');
+    }
+    public function passupdate(Request $request)
+    {
+        $customer = Customer::where('name', $request->session()->get('user'))->first();
         $customer->password = $request->pass;
         $customer->save();
         return redirect()->route('menu');
     }
 
-    public function customer(){
-        $takeorder = Customer::with('orders')->get();        
+    public function customer()
+    {
+        $takeorder = Order::with('customer')->get(); //customerfunc
+        //echo $takeorder;
         return view('manager')->with('takeorder', $takeorder);
     }
 }

@@ -6,15 +6,17 @@
       <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
    </head>
-   
+
    @include('inc.topbar')
    <body class="overflow-y-hidden">
    <div class="flex justify-center pt-10">
    <h1 class="text-sm font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
       Welcome Manager
-   <a href="{{route('logout')}}" class="py-2 px-2 font-medium text-gray-500 rounded-full bg-sky-500 text-white">Log Out</a> 
+   <a href="{{route('logout')}}" class="py-2 px-2 font-medium text-gray-500 rounded-full bg-sky-500 text-white">Log Out</a>
    </h1>
    </div>
+         <a href="{{route('customerlist')}}" class="py-2 px-2 font-medium text-gray-500 rounded-full bg-sky-500 text-white">Customer List</h1></a>
+
    <div class="flex flex-col">
   <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
@@ -43,15 +45,13 @@
               {{ $dummy->id }}
               </td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              {{ $dummy->name }}
+              {{ $dummy->customer->name }}
               </td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              @foreach($dummy->orders as $test)
-              {{$test->item}}
-              @endforeach
+                {{ $dummy->item }}
               </td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              {{ $dummy->phone }}
+              {{ $dummy->customer->phone }}
               </td>
             </tr>
          @endforeach
@@ -63,5 +63,5 @@
 </div>
       </body>
 </html>
-        
+
 
